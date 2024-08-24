@@ -1,0 +1,17 @@
+{
+	"name": "ls_ecdc_sqldb",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "ecdc-sql-server.database.windows.net",
+			"database": "ecdc-sql-database",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "rsqladmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEYxMzNGRENELUY3MzEtNDg5OS04NDQxLUFFMzY0M0E5QzQ5OF85M2FlYzdlMi02NjE0LTRjZjItOGU4NS1mMTRkYzY0MDRlZWQiDQp9"
+		}
+	}
+}

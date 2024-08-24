@@ -1,0 +1,9 @@
+{
+	"name": "ecdc-dataFactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1354ba3f-a8d4-48eb-843e-96b23d8487b6",
+		"tenantId": "b6417cd0-1f73-4471-9a39-20953822a34a"
+	}
+}

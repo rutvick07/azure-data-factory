@@ -1,0 +1,74 @@
+{
+	"name": "pl_process_ppulation_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy Processed Population Data From Github",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_ecdc_raw_csv_http",
+						"type": "DatasetReference",
+						"parameters": {
+							"sourceBaseURL": "https://raw.githubusercontent.com",
+							"sourceRelativeURL": "cloudboxacademy/covid19/main/processed/population/part-00000-tid-5489753962769140234-1fe5c365-da0d-4c2c-91ea-e18ad540ab45-34-1-c000.csv"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_process_population_data",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "process"
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-08-24T11:03:30Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
